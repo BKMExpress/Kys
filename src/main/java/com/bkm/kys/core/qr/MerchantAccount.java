@@ -21,8 +21,46 @@ public class MerchantAccount {
     private String instCount;
     private String location;
     private String rrn;
-    private String acquirerSpecific;
-    private String baftSpecific;
+
+    @Override
+    public String toString() {
+        StringBuffer sb = new StringBuffer();
+
+        sb.append(emvQrDataObject("qrId", qrId));
+        sb.append(emvQrDataObject("bitmap26", bitmap26));
+        sb.append(emvQrDataObject("serialNo", serialNo));
+        sb.append(emvQrDataObject("dateTime", dateTime));
+        sb.append(emvQrDataObject("qrGenerator", qrGenerator));
+        sb.append(emvQrDataObject("requestAmount", requestAmount));
+        sb.append(emvQrDataObject("qrType", qrType));
+        sb.append(emvQrDataObject("terminalType", terminalType));
+        sb.append(emvQrDataObject("bitmap27", bitmap27));
+        sb.append(emvQrDataObject("hash", hash));
+        sb.append(emvQrDataObject("schemas", schemas));
+        sb.append(emvQrDataObject("brand", brand));
+        sb.append(emvQrDataObject("instCount", instCount));
+        sb.append(emvQrDataObject("location", location));
+        sb.append(emvQrDataObject("rrn", rrn));
+
+        return sb.toString();
+    }
+
+    private String emvQrDataObject(String tag, String value) {
+        if (Util.isEmptyString(value) )
+            return "";
+
+        StringBuffer sb = new StringBuffer();
+        String tagNo = QrTagMap.getMerchantAccountTagNoByName(tag);
+
+        sb.append(tagNo);
+        sb.append(value.length());
+        sb.append(value);
+
+        String res = sb.toString() ;
+
+        return res != null ? res : "";
+    }
+
 
     public void setField(QrEmvTag qrEmvTag){
         List<QrEmvTag> list = qrEmvTag.getSubTagList();
@@ -203,19 +241,7 @@ public class MerchantAccount {
         this.rrn = rrn;
     }
 
-    public String getAcquirerSpecific() {
-        return acquirerSpecific;
-    }
 
-    public void setAcquirerSpecific(String acquirerSpecific) {
-        this.acquirerSpecific = acquirerSpecific;
-    }
 
-    public String getBaftSpecific() {
-        return baftSpecific;
-    }
 
-    public void setBaftSpecific(String baftSpecific) {
-        this.baftSpecific = baftSpecific;
-    }
 }

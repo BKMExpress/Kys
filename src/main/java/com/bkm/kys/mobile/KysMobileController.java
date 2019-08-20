@@ -59,10 +59,7 @@ public class KysMobileController {
     public @ResponseBody
     PaymentResponse doPayment(@RequestBody PaymentRequest request ){
 
-        PaymentResponse response = new PaymentResponse();
-        // PaymentResponse response = qrService.startQrTransaction(request);
-        response.setResultCode(0);
-        response.setResultDesc("SUCCESS");
+        PaymentResponse response = qrService.startQrTransaction(request);
 
         return response;
     }

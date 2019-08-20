@@ -9,7 +9,7 @@ public class KkfResponse {
     private int terminalType;
     private String supportedSchema;
     private String supportedBrand;
-    private int installmentNumber;
+    private String installmentNumber;
     private String rnn;
     private String amount;
     private int mcc;
@@ -85,11 +85,11 @@ public class KkfResponse {
         this.supportedBrand = supportedBrand;
     }
 
-    public int getInstallmentNumber() {
+    public String getInstallmentNumber() {
         return installmentNumber;
     }
 
-    public void setInstallmentNumber(int installmentNumber) {
+    public void setInstallmentNumber(String installmentNumber) {
         this.installmentNumber = installmentNumber;
     }
 

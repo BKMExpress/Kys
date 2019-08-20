@@ -7,8 +7,8 @@ import java.util.*;
 
 public class Constant {
 
-    public static final String bkmGetShortQrInfoUrl ="http://localhost:8080/kys/getShortQrInfo";
-    public static final String bkmStartTransactionUrl ="";
+    public static final String bkmGetShortQrInfoUrl = "http://localhost:8080/kys/getShortQrInfo";
+    public static final String bkmStartTransactionUrl = "http://localhost:8080/kys/startQrTransaction";
 
     public static Map<Integer, String> merchantMap = new HashMap<>();
     public static Map<String, Card> cardMap = new HashMap<>();

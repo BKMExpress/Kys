@@ -9,6 +9,8 @@ public class EmvQr extends Qr {
     private String payloadIndicator;
     private String pointOfInitiation;
     private MerchantAccount merchantAccount;
+    private String acquirerSpecific;
+    private String baftSpecific;
     private String categoryCode;
     private String currencyCode;
     private String amount;
@@ -45,7 +47,9 @@ public class EmvQr extends Qr {
         sb.append(value.length());
         sb.append(value);
 
-        return sb.toString();
+        String res = sb.toString() ;
+
+        return res != null ? res : "";
     }
 
     public String getQrText() {
@@ -54,7 +58,8 @@ public class EmvQr extends Qr {
         sb.append(emvQrDataObject("payloadIndicator", payloadIndicator));
         sb.append(emvQrDataObject("pointOfInitiation", pointOfInitiation));
         sb.append(emvQrDataObject("merchantAccount", merchantAccount.toString()));
-        sb.append(emvQrDataObject("category", categoryCode));
+        sb.append(emvQrDataObject("acquirerSpecific", acquirerSpecific));
+        sb.append(emvQrDataObject("baftSpecific", baftSpecific));
         sb.append(emvQrDataObject("categoryCode", categoryCode));
         sb.append(emvQrDataObject("currencyCode", currencyCode));
         sb.append(emvQrDataObject("amount", amount));
@@ -76,7 +81,7 @@ public class EmvQr extends Qr {
         try {
             Field field = EmvQr.class.getDeclaredField(fieldName);
             field.setAccessible(true);
-            if (  Integer.valueOf(qrEmvTag.getTagNo()) >= 26 && Integer.valueOf(qrEmvTag.getTagNo()) <= 51 )
+            if (  Integer.valueOf(qrEmvTag.getTagNo()) >= 26 && Integer.valueOf(qrEmvTag.getTagNo()) <= 27 )
                 merchantAccount.setField(qrEmvTag);
             else
                 field.set(this, qrEmvTag.getValue());
@@ -215,5 +220,21 @@ public class EmvQr extends Qr {
 
     public void setCrc(String crc) {
         this.crc = crc;
+    }
+
+    public String getAcquirerSpecific() {
+        return acquirerSpecific;
+    }
+
+    public void setAcquirerSpecific(String acquirerSpecific) {
+        this.acquirerSpecific = acquirerSpecific;
+    }
+
+    public String getBaftSpecific() {
+        return baftSpecific;
+    }
+
+    public void setBaftSpecific(String baftSpecific) {
+        this.baftSpecific = baftSpecific;
     }
 }

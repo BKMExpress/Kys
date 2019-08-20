@@ -26,6 +26,7 @@ public class QrController {
         String emvQrText = qrService.generateEmvQr();
 
         return emvQrText;
+
     }
 
 }

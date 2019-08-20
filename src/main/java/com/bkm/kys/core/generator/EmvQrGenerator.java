@@ -16,6 +16,8 @@ public class EmvQrGenerator implements QrGenerator {
         emvQr.setPayloadIndicator((String) map.get(QrTagMap.emvQrMap.get("00")));
         emvQr.setPointOfInitiation((String) map.get(QrTagMap.emvQrMap.get("01")));
         emvQr.setMerchantAccount((MerchantAccount) map.get(QrTagMap.emvQrMap.get("26")));
+        emvQr.setAcquirerSpecific((String) map.get(QrTagMap.emvQrMap.get("28")));
+        emvQr.setBaftSpecific((String) map.get(QrTagMap.emvQrMap.get("29")));
         emvQr.setCategoryCode((String) map.get(QrTagMap.emvQrMap.get("52")));
         emvQr.setCurrencyCode((String) map.get(QrTagMap.emvQrMap.get("53")));
         emvQr.setAmount((String) map.get(QrTagMap.emvQrMap.get("54")));
@@ -32,29 +34,5 @@ public class EmvQrGenerator implements QrGenerator {
 
         return  emvQr;
     }
-
-    /*
-    alanlar gelecek
-    otomatik alanlar
-    buna alanlarnasıl geçsin
-
-    account map - >
-    private String payloadIndicator;
-    private String pointOfInitiation;
-    private MerchantAccount merchantAccount;
-    private String categoryCode;
-    private String currencyCode;
-    private String amount;
-    private String indicator;
-    private String convenienceFixedFee;
-    private String conveniencePercentageFee;
-    private String countryCode;
-    private String merchantName;
-    private String merchantCity;
-    private String postalCode;
-    private String additionalData;
-    private String merchantInfo;
-    private String crc;
-    */
 
 }

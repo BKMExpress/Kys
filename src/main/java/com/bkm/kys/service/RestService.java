@@ -23,15 +23,13 @@ public class RestService {
     }
 
     public QrTrxResponse startQrTransaction(QrTrxRequest qrTrxRequest) {
-  /*
+
         RestTemplate restTemplate = new RestTemplate();
 
-        HttpEntity<String> entity = getEntityForRestTemplate(qrTrxRequest);
         QrTrxResponse response = restTemplate.postForObject(Constant.bkmStartTransactionUrl, qrTrxRequest, QrTrxResponse.class);
 
         return response;
-*/
-        return null;
+
     }
 /*
     public static HttpEntity<String> getEntityForRestTemplate(Object request) {

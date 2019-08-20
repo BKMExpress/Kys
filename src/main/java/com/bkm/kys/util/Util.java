@@ -1,6 +1,7 @@
 package com.bkm.kys.util;
 
 import com.bkm.kys.model.dto.Card;
+import com.bkm.kys.model.dto.CardInfo;
 import com.google.common.hash.Hashing;
 
 import java.math.BigDecimal;
@@ -68,5 +69,27 @@ public class Util {
         BigDecimal amount = new BigDecimal(random).setScale(2,BigDecimal.ROUND_DOWN);
         return amount;
     }
+
+    public static String base64Decode(String s) {
+
+        return new String(Base64.getDecoder().decode(s));
+    }
+
+    public static String base64Encode(String s) {
+
+        return new String(Base64.getEncoder().encode(s.getBytes()));
+    }
+
+    public static String getEncryptedData(CardInfo cardInfo) {
+
+        String token = cardInfo.getPan().concat(cardInfo.getLastUsageDate());
+
+        // TODO
+        // encrpyt token
+
+        return token;
+    }
+
+
 
 }

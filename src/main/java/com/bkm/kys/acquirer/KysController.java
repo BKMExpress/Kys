@@ -13,18 +13,37 @@ public class KysController {
     @Autowired
     KysService kysService;
 
-    @RequestMapping(value = {"/getShortQrInfo"}, method= RequestMethod.POST)
+    @Autowired
+    QrService qrService;
+
+    @RequestMapping(value = {"/getShortQrInfo"}, method = RequestMethod.POST)
     public @ResponseBody
-    KkfResponse getShortQrInfo(@RequestBody KkfRequest request ){
+    KkfResponse getShortQrInfo(@RequestBody KkfRequest request) {
 
         return kysService.getShortQrInfo(request);
     }
 
-    @RequestMapping(value = {"/startQrTransaction"}, method= RequestMethod.POST)
+    @RequestMapping(value = {"/startQrTransaction"}, method = RequestMethod.POST)
     public @ResponseBody
-    QrTrxResponse startQrTransaction(@RequestBody QrTrxRequest request ){
+    QrTrxResponse startQrTransaction(@RequestBody QrTrxRequest request) {
 
         return kysService.startQrTransaction(request);
     }
+
+    // Bu iki servis ile acquirer kendi ürettiği qr ı simulatore iletebilir
+
+    @RequestMapping(value = {"/getShortQrText"}, method = RequestMethod.GET)
+    public @ResponseBody
+    String getShortQrText() {
+
+        return qrService.generateKkfQr();
+    }
+
+    @RequestMapping(value = {"/getEmvQrText"}, method = RequestMethod.GET)
+    public @ResponseBody
+    String getEmvQrText() {
+        return qrService.generateEmvQr();
+    }
+
 
 }

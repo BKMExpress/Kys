@@ -1,7 +1,5 @@
 package com.bkm.kys.repo;
 
-import com.bkm.kys.core.qr.Person;
-import com.bkm.kys.core.qr.Qr;
 import com.bkm.kys.domain.KysQr;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;

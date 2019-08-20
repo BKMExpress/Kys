@@ -16,8 +16,8 @@ public class QrTagMap {
 
         emvQrMap.put("26","merchantAccount");
         emvQrMap.put("27","merchantAccount");
-        emvQrMap.put("28","merchantAccount");
-
+        emvQrMap.put("28","acquirerSpecific");
+        emvQrMap.put("29","baftSpecific");
         emvQrMap.put("52","categoryCode");
         emvQrMap.put("53","currencyCode");
         emvQrMap.put("54","amount");
@@ -67,4 +67,18 @@ public class QrTagMap {
 
         return null;
     }
+
+    public static String getMerchantAccountTagNoByName(String tagName) {
+        String tagNo = null;
+        for ( Map.Entry<String, String> entry : merchantAccountMap.entrySet() ) {
+            if ( entry.getValue().equals(tagName) )
+                tagNo = entry.getKey();
+        }
+
+        if ( "bitmap26".equals(tagName) || "bitmap27".equals(tagName) )
+            tagNo = "00";
+
+        return tagNo;
+    }
+
 }
